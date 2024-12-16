@@ -44,6 +44,7 @@ RUN apt-get update -y && \
     bin/logstash-plugin update logstash-filter-translate && \
     rm /etc/logstash/pipelines.yml && \
     rm /etc/logstash/logstash.yml && \
+    bin/logstash-plugin install logstash-output-opensearch && \
 #
 # Setup user, groups and configs
     groupmod -g 2000 logstash && \
