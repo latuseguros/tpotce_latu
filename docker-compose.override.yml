@@ -1,0 +1,7 @@
+services:
+## Logstash service
+  logstash:
+    build: ./docker/elk/logstash
+    pull_policy: build
+    external_links:
+     - "opensearch-latu-tpot-dev:https://search-latu-tpot-dev-2nabgy5y7d5dseu3ehllsc7d6a.us-east-1.es.amazonaws.com"
