@@ -2,7 +2,7 @@
 
 myINSTALL_NOTIFICATION="### Now installing required packages ..."
 myUSER=$(whoami)
-myTPOT_CONF_FILE="/home/${myUSER}/tpotce_latu/.env"
+myTPOT_CONF_FILE="/home/${myUSER}/tpotce/.env"
 myPACKAGES_DEBIAN="ansible apache2-utils cracklib-runtime wget"
 myPACKAGES_FEDORA="ansible cracklib httpd-tools wget"
 myPACKAGES_ROCKY="ansible-core ansible-collection-redhat-rhel_mgmt epel-release cracklib httpd-tools wget"
@@ -119,7 +119,7 @@ fi
 if [ ! -f installer/install/tpot.yml ] && [ ! -f tpot.yml ];
   then
     echo "### Now downloading T-Pot Ansible Installation Playbook ... "
-    wget -qO tpot.yml https://raw.githubusercontent.com/telekom-security/tpotce_latu/master/installer/install/tpot.yml
+    wget -qO tpot.yml https://raw.githubusercontent.com/telekom-security/tpotce/master/installer/install/tpot.yml
     myANSIBLE_TPOT_PLAYBOOK="tpot.yml"
     echo
   else
@@ -189,43 +189,43 @@ while true; do
       echo
       echo "### Installing T-Pot Standard / HIVE."
       myTPOT_TYPE="HIVE"
-      cp ${HOME}/tpotce_latu/compose/standard.yml ${HOME}/tpotce_latu/docker-compose.yml
+      cp ${HOME}/tpotce/compose/standard.yml ${HOME}/tpotce/docker-compose.yml
       myINFO=""
       break ;;
     s|S)
       echo
       echo "### Installing T-Pot Sensor."
       myTPOT_TYPE="SENSOR"
-      cp ${HOME}/tpotce_latu/compose/sensor.yml ${HOME}/tpotce_latu/docker-compose.yml
+      cp ${HOME}/tpotce/compose/sensor.yml ${HOME}/tpotce/docker-compose.yml
       myINFO="### Make sure to deploy SSH keys to this SENSOR and disable SSH password authentication.
-### On HIVE run the tpotce_latu/deploy.sh script to join this SENSOR to the HIVE."
+### On HIVE run the tpotce/deploy.sh script to join this SENSOR to the HIVE."
       break ;;
     l|L)
       echo
       echo "### Installing T-Pot LLM."
       myTPOT_TYPE="HIVE"
-      cp ${HOME}/tpotce_latu/compose/llm.yml ${HOME}/tpotce_latu/docker-compose.yml
+      cp ${HOME}/tpotce/compose/llm.yml ${HOME}/tpotce/docker-compose.yml
       myINFO="Make sure to adjust the T-Pot config file (.env) for Ollama / ChatGPT settings."
       break ;;
     i|I)
       echo
       echo "### Installing T-Pot Mini."
       myTPOT_TYPE="HIVE"
-      cp ${HOME}/tpotce_latu/compose/mini.yml ${HOME}/tpotce_latu/docker-compose.yml
+      cp ${HOME}/tpotce/compose/mini.yml ${HOME}/tpotce/docker-compose.yml
       myINFO=""
       break ;;
     m|M)
       echo
       echo "### Installing T-Pot Mobile."
       myTPOT_TYPE="MOBILE"
-      cp ${HOME}/tpotce_latu/compose/mobile.yml ${HOME}/tpotce_latu/docker-compose.yml
+      cp ${HOME}/tpotce/compose/mobile.yml ${HOME}/tpotce/docker-compose.yml
       myINFO=""
       break ;;
     t|T)
       echo
       echo "### Installing T-Pot Tarpit."
       myTPOT_TYPE="HIVE"
-      cp ${HOME}/tpotce_latu/compose/tarpit.yml ${HOME}/tpotce_latu/docker-compose.yml
+      cp ${HOME}/tpotce/compose/tarpit.yml ${HOME}/tpotce/docker-compose.yml
       myINFO=""
       break ;;
   esac
@@ -307,7 +307,7 @@ fi
 
 # Pull docker images
 echo "### Now pulling images ..."
-sudo docker compose -f /home/${myUSER}/tpotce_latu/docker-compose.yml -f /home/${myUSER}/tpotce_latu/docker-compose.override.yml pull
+sudo docker compose -f /home/${myUSER}/tpotce/docker-compose.yml -f /home/${myUSER}/tpotce/docker-compose.override.yml pull
 echo
 
 # Show running services
