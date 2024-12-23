@@ -158,7 +158,7 @@ function fuREMOVEOLDIMAGES () {
 }
 
 function fuPULLIMAGES {
-	docker compose -f ~/tpotce/docker-compose.yml pull
+	docker compose -f ~/tpotce/docker-compose.yml -f ~/tpotce/docker-compose.override.yml pull
 }
 
 function fuUPDATER () {
